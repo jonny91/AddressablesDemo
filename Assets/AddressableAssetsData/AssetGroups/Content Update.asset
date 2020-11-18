@@ -15,7 +15,7 @@ MonoBehaviour:
   m_GroupName: Content Update
   m_Data:
     m_SerializedData: []
-  m_GUID: 94bd2cad95f3f49d9865c93af203e2a1
+  m_GUID: b2cd7192bd9d5d840a4edec2f72f0dfe
   m_SerializeEntries:
   - m_GUID: 704203a54a0694d968ab41607b232aa1
     m_Address: Assets/CubeExample/Mats/Red.mat
@@ -27,5 +27,5 @@ MonoBehaviour:
   m_Settings: {fileID: 11400000, guid: 67eede1932c0141c9af091f4ca64b64d, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: b58a117cf63014099bb2809196e100ea, type: 2}
-    - {fileID: 11400000, guid: 859c7564f78954747a57ad68cfa47eb4, type: 2}
+    - {fileID: 11400000, guid: b1ecdf2072c6b664f8f8526c6e2aa572, type: 2}
+    - {fileID: 11400000, guid: f4d4a267d91fe744fb8a5052f0280ca7, type: 2}

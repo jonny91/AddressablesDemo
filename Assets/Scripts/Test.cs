@@ -25,15 +25,18 @@ public class Test : MonoBehaviour
 	[SerializeField]
 	private Text UpdatePercent;
 
+	[SerializeField]
+	private Text DownloadPercent;
+
 	private List<object> _updateKeys = new List<object>();
 
-	public async void UpdateAA()
+	public async void UpdateCatalog()
 	{
-		var _updateCatalogHandle = Addressables.CheckForCatalogUpdates(false);
-		await _updateCatalogHandle.Task;
-		if (_updateCatalogHandle.Status == AsyncOperationStatus.Succeeded)
+		var updateCatalogHandle = Addressables.CheckForCatalogUpdates(false);
+		await updateCatalogHandle.Task;
+		if (updateCatalogHandle.Status == AsyncOperationStatus.Succeeded)
 		{
-			List<string> catalogs = _updateCatalogHandle.Result;
+			List<string> catalogs = updateCatalogHandle.Result;
 			if (catalogs != null && catalogs.Count > 0)
 			{
 				foreach (var catalog in catalogs)
@@ -55,17 +58,17 @@ public class Test : MonoBehaviour
 					_updateKeys.AddRange(item.Keys);
 				}
 
+				UpdatePercent.text = "download catalog finish " + updateHandle.Status;
 				Debug.Log("download catalog finish " + updateHandle.Status);
 			}
 			else
 			{
+				UpdatePercent.text = "dont need update catalogs";
 				Debug.Log("dont need update catalogs");
 			}
 		}
 
-		Addressables.Release(_updateCatalogHandle);
-
-		DownLoad();
+		Addressables.Release(updateCatalogHandle);
 	}
 
 	private AsyncOperationHandle _downloadHandle;
@@ -77,6 +80,7 @@ public class Test : MonoBehaviour
 		var downloadsize = Addressables.GetDownloadSizeAsync((IEnumerable) _updateKeys);
 		yield return downloadsize;
 		Debug.Log("start download size :" + downloadsize.Result);
+		DownloadPercent.text = "start download size :" + downloadsize.Result;
 
 		if (downloadsize.Result > 0)
 		{
@@ -90,7 +94,6 @@ public class Test : MonoBehaviour
 				List<UnityEngine.ResourceManagement.ResourceProviders.IAssetBundleResource>)
 			{
 				var ab = item.GetAssetBundle();
-				Debug.LogError("ab name " + ab.name);
 				foreach (var name in ab.GetAllAssetNames())
 				{
 					Debug.Log("asset name " + name);
@@ -113,7 +116,7 @@ public class Test : MonoBehaviour
 	{
 		if (_isDownloading)
 		{
-			UpdatePercent.text = _downloadHandle.PercentComplete.ToString();
+			DownloadPercent.text = _downloadHandle.PercentComplete.ToString();
 		}
 	}
 
@@ -124,23 +127,23 @@ public class Test : MonoBehaviour
 			return;
 		}
 
-		var prefab = SyncAddressables.LoadAsset<GameObject>("Chicken");
-		_chicken = Instantiate(prefab,
-			new Vector3(Random.Range(-4.5f, 4.5f), 0, Random.Range(-4.5f, 4.5f)),
-			Quaternion.Euler(0, Random.Range(0, 360), 0));
+//		var prefab = SyncAddressables.LoadAsset<GameObject>("Chicken");
+//		_chicken = Instantiate(prefab,
+//			new Vector3(Random.Range(-4.5f, 4.5f), 0, Random.Range(-4.5f, 4.5f)),
+//			Quaternion.Euler(0, Random.Range(0, 360), 0));
 
 
-//		_chickenHandle = Addressables.LoadAssetAsync<GameObject>("Toon Chicken");
-//		_chickenHandle.Completed += operationHandle =>
-//		{
-//			if (operationHandle.Status == AsyncOperationStatus.Succeeded)
-//			{
-//				var prefab = operationHandle.Result;
-//				_chicken = Instantiate(prefab,
-//					new Vector3(Random.Range(-4.5f, 4.5f), 0, Random.Range(-4.5f, 4.5f)),
-//					Quaternion.Euler(0, Random.Range(0, 360), 0));
-//			}
-//		};
+		_chickenHandle = Addressables.LoadAssetAsync<GameObject>("Chicken");
+		_chickenHandle.Completed += operationHandle =>
+		{
+			if (operationHandle.Status == AsyncOperationStatus.Succeeded)
+			{
+				var prefab = operationHandle.Result;
+				_chicken = Instantiate(prefab,
+					new Vector3(Random.Range(-4.5f, 4.5f), 0, Random.Range(-4.5f, 4.5f)),
+					Quaternion.Euler(0, Random.Range(0, 360), 0));
+			}
+		};
 	}
 
 	public void Release()
@@ -158,9 +161,16 @@ public class Test : MonoBehaviour
 			if (operationHandle.Status == AsyncOperationStatus.Succeeded)
 			{
 				var prefab = operationHandle.Result;
-				_cube = Instantiate(prefab);
+				_cube = Instantiate(prefab,
+					new Vector3(Random.Range(-4.5f, 4.5f), 0, Random.Range(-4.5f, 4.5f)),
+					Quaternion.identity);
 			}
 		};
+
+//		var prefab = SyncAddressables.LoadAsset<GameObject>("Cube");
+//		_cube = Instantiate(prefab,
+//			new Vector3(Random.Range(-4.5f, 4.5f), 0, Random.Range(-4.5f, 4.5f)),
+//			Quaternion.identity);
 	}
 
 	public void ChangeBlue()

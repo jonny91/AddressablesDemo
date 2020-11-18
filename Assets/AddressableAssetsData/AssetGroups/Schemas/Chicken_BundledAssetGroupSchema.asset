@@ -14,10 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Group: {fileID: 11400000, guid: bc9709b2e00804ff2be0d513ccd8ec58, type: 2}
   m_Compression: 1
+  m_IncludeAddressInCatalog: 1
+  m_IncludeGUIDInCatalog: 1
+  m_IncludeLabelsInCatalog: 1
+  m_InternalIdNamingMode: 0
   m_IncludeInBuild: 1
   m_BundledAssetProviderType:
-    m_AssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-    m_ClassName: SyncBundledAssetProvider
+    m_AssemblyName: Unity.ResourceManager, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    m_ClassName: UnityEngine.ResourceManagement.ResourceProviders.BundledAssetProvider
   m_ForceUniqueProvider: 0
   m_UseAssetBundleCache: 1
   m_UseAssetBundleCrc: 1
@@ -32,6 +36,6 @@ MonoBehaviour:
     m_Id: 579f8ca8b4fb442ffb2a445f33aba1d7
   m_BundleMode: 0
   m_AssetBundleProviderType:
-    m_AssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-    m_ClassName: SyncBundleProvider
+    m_AssemblyName: Unity.ResourceManager, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    m_ClassName: UnityEngine.ResourceManagement.ResourceProviders.AssetBundleProvider
   m_BundleNaming: 0

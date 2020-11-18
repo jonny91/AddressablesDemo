@@ -20,8 +20,7 @@ MonoBehaviour:
   - m_GUID: 300d27813878f4ac59ac8e23897d5111
     m_Address: Bust_10017
     m_ReadOnly: 0
-    m_SerializedLabels:
-    - HD
+    m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
   m_ReadOnly: 0
@@ -30,4 +29,3 @@ MonoBehaviour:
     m_Schemas:
     - {fileID: 11400000, guid: beaae65df107644d5b330deaf698b3d5, type: 2}
     - {fileID: 11400000, guid: a1eb4a107018f4eb1b19c777057c6a77, type: 2}
-    - {fileID: 11400000, guid: 7f9350ada955e49b2b8a3e78ac4f4e84, type: 2}
