@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -20,6 +21,101 @@ public class Test : MonoBehaviour
 
 	[SerializeField]
 	private Image LDImg;
+
+	[SerializeField]
+	private Text UpdatePercent;
+
+	private List<object> _updateKeys = new List<object>();
+
+	public async void UpdateAA()
+	{
+		var _updateCatalogHandle = Addressables.CheckForCatalogUpdates(false);
+		await _updateCatalogHandle.Task;
+		if (_updateCatalogHandle.Status == AsyncOperationStatus.Succeeded)
+		{
+			List<string> catalogs = _updateCatalogHandle.Result;
+			if (catalogs != null && catalogs.Count > 0)
+			{
+				foreach (var catalog in catalogs)
+				{
+					Debug.Log("catalog  " + catalog);
+				}
+
+				Debug.Log("download catalog start ");
+				var updateHandle = Addressables.UpdateCatalogs(catalogs, false);
+				await updateHandle.Task;
+				foreach (var item in updateHandle.Result)
+				{
+					Debug.Log("catalog result " + item.LocatorId);
+					foreach (var key in item.Keys)
+					{
+						Debug.Log("catalog key " + key);
+					}
+
+					_updateKeys.AddRange(item.Keys);
+				}
+
+				Debug.Log("download catalog finish " + updateHandle.Status);
+			}
+			else
+			{
+				Debug.Log("dont need update catalogs");
+			}
+		}
+
+		Addressables.Release(_updateCatalogHandle);
+
+		DownLoad();
+	}
+
+	private AsyncOperationHandle _downloadHandle;
+
+	private bool _isDownloading = false;
+
+	public IEnumerator DownAssetImpl()
+	{
+		var downloadsize = Addressables.GetDownloadSizeAsync((IEnumerable) _updateKeys);
+		yield return downloadsize;
+		Debug.Log("start download size :" + downloadsize.Result);
+
+		if (downloadsize.Result > 0)
+		{
+			_isDownloading = true;
+			_downloadHandle =
+				Addressables.DownloadDependenciesAsync((IEnumerable) _updateKeys, Addressables.MergeMode.Union);
+			yield return _downloadHandle;
+			//await download.Task;
+			Debug.Log("download result type " + _downloadHandle.Result.GetType());
+			foreach (var item in _downloadHandle.Result as
+				List<UnityEngine.ResourceManagement.ResourceProviders.IAssetBundleResource>)
+			{
+				var ab = item.GetAssetBundle();
+				Debug.LogError("ab name " + ab.name);
+				foreach (var name in ab.GetAllAssetNames())
+				{
+					Debug.Log("asset name " + name);
+				}
+			}
+
+			Addressables.Release(_downloadHandle);
+		}
+
+		_isDownloading = false;
+		Addressables.Release(downloadsize);
+	}
+
+	public void DownLoad()
+	{
+		StartCoroutine(DownAssetImpl());
+	}
+
+	private void Update()
+	{
+		if (_isDownloading)
+		{
+			UpdatePercent.text = _downloadHandle.PercentComplete.ToString();
+		}
+	}
 
 	public void CreateChicken()
 	{
@@ -56,12 +152,7 @@ public class Test : MonoBehaviour
 
 	public void CreateCube()
 	{
-		var prefab1 = SyncAddressables.LoadAsset<GameObject>("Cube");
-		_cube = Instantiate(prefab1);
-		return;
-		_cube = SyncAddressables.Instantiate("Assets/CubeExample/Cube.prefab");
-		return;
-		var handle = Addressables.LoadAssetAsync<GameObject>("Assets/CubeExample/Cube.prefab");
+		var handle = Addressables.LoadAssetAsync<GameObject>("Cube");
 		handle.Completed += operationHandle =>
 		{
 			if (operationHandle.Status == AsyncOperationStatus.Succeeded)

@@ -25,3 +25,5 @@ MonoBehaviour:
     Results: []
   - RuleName: Build Bundle Layout
     Results: []
+  - RuleName: Bundle Layout Preview
+    Results: []

@@ -13,16 +13,17 @@ MonoBehaviour:
   m_Name: AddressableAssetSettings
   m_EditorClassIdentifier: 
   m_DefaultGroup: 2a12781955bb143688ff430724bf0f60
-  m_BuildRemoteCatalog: 0
+  m_OptimizeCatalogSize: 0
+  m_BuildRemoteCatalog: 1
   m_BundleLocalCatalog: 0
   m_DisableCatalogUpdateOnStart: 0
   m_UniqueBundleIds: 0
   m_maxConcurrentWebRequests: 500
   m_ContiguousBundles: 0
   m_RemoteCatalogBuildPath:
-    m_Id: 79e9188e931e8456e9f8bf14493ba5c9
+    m_Id: 8a6f9861287b34396b518b80ad388354
   m_RemoteCatalogLoadPath:
-    m_Id: 579f8ca8b4fb442ffb2a445f33aba1d7
+    m_Id: 4a3e0306659454447929d58bf843b000
   m_overridePlayerVersion: 
   m_GroupAssets:
   - {fileID: 11400000, guid: 1689e18c30bd04dc097d22bb9139b9aa, type: 2}
@@ -31,8 +32,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 88e22b97e59a4451bbf9ad8d594d9f6c, type: 2}
   - {fileID: 11400000, guid: fae6eadb175984f5e96d78a09eee475d, type: 2}
   - {fileID: 11400000, guid: e53646d8ea2054954931a976adc6362a, type: 2}
-  - {fileID: 11400000, guid: 6f71dc260cc75414a9494b094d9cd5d2, type: 2}
-  - {fileID: 11400000, guid: 9f1ec074c69ea4abdb50aa8e331c8626, type: 2}
+  - {fileID: 11400000, guid: d47517ef18849483f8e6716156cfd895, type: 2}
+  - {fileID: 11400000, guid: 656d27ad4f24048cf9207388861a1138, type: 2}
+  - {fileID: 11400000, guid: 0172fa01c606b47e19d7c4b5b4f3d5f5, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -106,7 +108,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 71fdc1b7b5c384538b30fc10e316130b, type: 2}
   - {fileID: 11400000, guid: efb4c486cdf11422cadadbdcc0bf42ba, type: 2}
   - {fileID: 11400000, guid: 2f50f8ccad1915f4b869fb3fd7d7bf5e, type: 2}
-  m_ActiveProfileId: 2a53877ea887340a6956d544afa1b2bf
+  m_ActiveProfileId: 738b3179a1aa3470788a6d8a48629251
   m_HostingServicesManager:
     m_HostingServiceInfos:
     - classRef: UnityEditor.AddressableAssets.HostingServices.HttpHostingService,
@@ -119,11 +121,11 @@ MonoBehaviour:
           m_Key: HostingServicePort
         - m_AssemblyName: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
           m_ClassName: System.String
-          m_Data: Library/com.unity.addressables/aa/OSX/StandaloneOSX
+          m_Data: Library/com.unity.addressables/aa/Android/Android;ServerData/Android
           m_Key: ContentRoot
         - m_AssemblyName: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
           m_ClassName: System.Boolean
-          m_Data: False
+          m_Data: True
           m_Key: IsEnabled
         - m_AssemblyName: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
           m_ClassName: System.String

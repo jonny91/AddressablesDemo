@@ -17,12 +17,18 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 65eb3fd318d7148c7adff2c31ae3a092
   m_SerializeEntries:
-  - m_GUID: 7150fbf3380e441d2a484746a5804112
-    m_Address: Assets/CubeExample/Mats
+  - m_GUID: 12fd1c45ced5d4832ada413db28aa557
+    m_Address: Assets/CubeExample/Mats/Default.mat
     m_ReadOnly: 0
     m_SerializedLabels: []
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
+    m_MainAsset: {fileID: 2100000, guid: 12fd1c45ced5d4832ada413db28aa557, type: 2}
+    m_TargetAsset: {fileID: 2100000, guid: 12fd1c45ced5d4832ada413db28aa557, type: 2}
+  - m_GUID: 16df1b753520e46f68cfbb6363b80c30
+    m_Address: Assets/CubeExample/Mats/Blue.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 2100000, guid: 16df1b753520e46f68cfbb6363b80c30, type: 2}
+    m_TargetAsset: {fileID: 2100000, guid: 16df1b753520e46f68cfbb6363b80c30, type: 2}
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 67eede1932c0141c9af091f4ca64b64d, type: 2}
   m_SchemaSet:
