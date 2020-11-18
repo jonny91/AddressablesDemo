@@ -17,14 +17,12 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 41ef43902e3734e89900bb41518ada8c
   m_SerializeEntries:
-  - m_GUID: db0b1b7ce85e94139947cb872f57bccb
-    m_Address: Cube
+  - m_GUID: a2ffd4c6a10e4f647bc32dae13b6ab2d
+    m_Address: Cubes
     m_ReadOnly: 0
     m_SerializedLabels: []
-    m_MainAsset: {fileID: 8900831702404467012, guid: db0b1b7ce85e94139947cb872f57bccb,
-      type: 3}
-    m_TargetAsset: {fileID: 8900831702404467012, guid: db0b1b7ce85e94139947cb872f57bccb,
-      type: 3}
+    m_MainAsset: {fileID: 102900000, guid: a2ffd4c6a10e4f647bc32dae13b6ab2d, type: 3}
+    m_TargetAsset: {fileID: 102900000, guid: a2ffd4c6a10e4f647bc32dae13b6ab2d, type: 3}
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 67eede1932c0141c9af091f4ca64b64d, type: 2}
   m_SchemaSet:

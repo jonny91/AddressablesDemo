@@ -155,7 +155,7 @@ public class Test : MonoBehaviour
 
 	public void CreateCube()
 	{
-		var handle = Addressables.LoadAssetAsync<GameObject>("Cube");
+		var handle = Addressables.LoadAssetAsync<GameObject>("Cubes/Cube.prefab");
 		handle.Completed += operationHandle =>
 		{
 			if (operationHandle.Status == AsyncOperationStatus.Succeeded)
