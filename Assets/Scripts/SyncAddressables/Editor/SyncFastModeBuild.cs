@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEditor.AddressableAssets.Build;
@@ -39,7 +40,8 @@ public class SyncFastModeBuild : BuildScriptFastMode
                 Settings = aaSettings,
                 runtimeData = new ResourceManagerRuntimeData(),
                 bundleToAssetGroup = null,
-                locations = new List<ContentCatalogDataEntry>()
+                locations = new List<ContentCatalogDataEntry>(),
+                providerTypes = new HashSet<Type>(),
             };
             aaContext.runtimeData.BuildTarget = context.Target.ToString();
             aaContext.runtimeData.LogResourceManagerExceptions = aaSettings.buildSettings.LogResourceManagerExceptions;

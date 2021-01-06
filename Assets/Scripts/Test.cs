@@ -127,23 +127,23 @@ public class Test : MonoBehaviour
 			return;
 		}
 
-//		var prefab = SyncAddressables.LoadAsset<GameObject>("Chicken");
-//		_chicken = Instantiate(prefab,
-//			new Vector3(Random.Range(-4.5f, 4.5f), 0, Random.Range(-4.5f, 4.5f)),
-//			Quaternion.Euler(0, Random.Range(0, 360), 0));
+		var prefab = SyncAddressables.LoadAsset<GameObject>("Chicken");
+		_chicken = Instantiate(prefab,
+			new Vector3(Random.Range(-4.5f, 4.5f), 0, Random.Range(-4.5f, 4.5f)),
+			Quaternion.Euler(0, Random.Range(0, 360), 0));
 
 
-		_chickenHandle = Addressables.LoadAssetAsync<GameObject>("Chicken");
-		_chickenHandle.Completed += operationHandle =>
-		{
-			if (operationHandle.Status == AsyncOperationStatus.Succeeded)
-			{
-				var prefab = operationHandle.Result;
-				_chicken = Instantiate(prefab,
-					new Vector3(Random.Range(-4.5f, 4.5f), 0, Random.Range(-4.5f, 4.5f)),
-					Quaternion.Euler(0, Random.Range(0, 360), 0));
-			}
-		};
+//		_chickenHandle = Addressables.LoadAssetAsync<GameObject>("Chicken");
+//		_chickenHandle.Completed += operationHandle =>
+//		{
+//			if (operationHandle.Status == AsyncOperationStatus.Succeeded)
+//			{
+//				var prefab = operationHandle.Result;
+//				_chicken = Instantiate(prefab,
+//					new Vector3(Random.Range(-4.5f, 4.5f), 0, Random.Range(-4.5f, 4.5f)),
+//					Quaternion.Euler(0, Random.Range(0, 360), 0));
+//			}
+//		};
 	}
 
 	public void Release()
